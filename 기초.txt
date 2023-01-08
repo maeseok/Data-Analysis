@@ -8,3 +8,46 @@
 행이 많다 -> 컴퓨터가 느려짐 -> 고사양 장비 구축
 열이 많다 -> 분석 방법의 한계 -> 고급 분석 방법
 빅데이터 보다는 다양한 변수가 담겨 있는 다양한 데이터가 더 중요하다.
+
+pandas 기초
+- head() : 앞부분 출력(기본 5)
+- tail() : 뒷부분 출력(기본 5)
+- shape : 행, 열 개수 출력
+- info() : 변수 속성 출력
+- describe() : 요약 통계량 출력
+- mean() : 평균
+- plot.hist() : 히스토그램 
+
+1. 내장 함수 
+기본적으로 파이썬에 내장되어 있는 함수
+sum, max
+
+2. 패키지 함수
+패키지 함수는 패키지를 로드해야 사용할 수 있는 함수이다.
+import pandas as pd
+pd.read_csv('exam.csv')
+
+3. 메서드
+변수가 지니고 있는 함수이다.
+df.head()
+
+4. 어트리뷰트
+변수가 지니고 있는 값이다.
+메서드와 비슷하지만, 뒤에 괄호가 없다.
+df.shape
+
+- 변수명 바꾸기
+df.rename({'기존 변수명' : '새 변수명'})
+
+- 파생변수 만들기
+기존의 변수를 변형해 만든 변수를 말한다.
+df['var_sum']=df['var1']+df['var2']
+df['var_mean']=(df['var1']+df['var2'])/2
+
+- 조건문을 활용한 파생변수 만들기
+import numpy as np
+mpg['test']=np.where(mpg['total']>=20, 'pass','fail')
+mpg['test'].value_counts() -> 빈도표 확인가능
+count_test = mpg['test'].value_counts().sort_index() #알파벳순 정렬
+count_test.plot.bar()
+count_test.plot.bar(rot=0) #축 이름 수평으로 말하기

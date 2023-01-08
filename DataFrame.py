@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 #df = pd.DataFrame({'name':['김지훈','이유진','박동현','김민지'],'english':[90,80,60,70],'math':[50,60,100,20]})
 #print(sum(df['english']))
 
@@ -12,3 +13,9 @@ df_csv_exam = pd.read_csv('exam.csv')
 
 df_midterm = pd.DataFrame({'english':[90,80,60,70], 'math':[50,60,100,20], 'nclass':[1,1,2,2]})
 df_midterm.to_csv("output_newdata.csv", index=False)
+df_midterm['sum']=df_midterm['english']+df_midterm['math']
+#print(df_midterm)
+df_midterm['test']=np.where(df_midterm['sum']>=140,'pass','fail')
+#print(df_midterm)
+count_test=df_midterm['test'].value_counts().sort_index()
+count_test.plot()
