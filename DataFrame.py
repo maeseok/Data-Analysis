@@ -18,4 +18,4 @@ df_midterm['sum']=df_midterm['english']+df_midterm['math']
 df_midterm['test']=np.where(df_midterm['sum']>=140,'pass','fail')
 #print(df_midterm)
 count_test=df_midterm['test'].value_counts().sort_index()
-count_test.plot()
+count_test.plot

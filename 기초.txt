@@ -16,6 +16,7 @@ pandas 기초
 - info() : 변수 속성 출력
 - describe() : 요약 통계량 출력
 - mean() : 평균
+
 - plot.hist() : 히스토그램 
 
 1. 내장 함수 
@@ -51,3 +52,15 @@ mpg['test'].value_counts() -> 빈도표 확인가능
 count_test = mpg['test'].value_counts().sort_index() #알파벳순 정렬
 count_test.plot.bar()
 count_test.plot.bar(rot=0) #축 이름 수평으로 말하기
+
+
+- 데이터 전처리 : 분석에 적합하게 데이터를 가공하는 작업
+(판다스 명령어)
+query() : 행 추출
+df[] : 열(변수) 추출
+sort_values() : 정렬
+groupby() : 집단별로 나누기
+assign() : 변수 추가
+agg() : 통계치 구하기
+merge() : 데이터 합치기(열)
+concat() : 데이터 합치기(행)
