@@ -64,3 +64,37 @@ assign() : 변수 추가
 agg() : 통계치 구하기
 merge() : 데이터 합치기(열)
 concat() : 데이터 합치기(행)
+
+- 빠진 데이터 찾기
+결측치 : 누락된 값, 비어 있는 값을 의미한다.
+pandas - isna() : 결측치 확인(boolean값으로 반환)
+         inna().sum() : 결측치 빈도 확인
+         dropna(subset=[]) : 결측치 제거
+         dropna() : 모든 변수에 결측치 제거 (꼭 필요할 때만 사용)
+
+- 결측치 대체하기
+mean()을 이용한 .fillna()로 채워넣기
+
+- 이상치 정제하기
+이상치 : 정상 범위에서 크게 벗어난 값
+이상치 확인 : value_coubts().sort_index()로 값 확인
+결측 처리 : np.where(df[]==?, np.nan, df[])
+평균 구하기 : dropna(subset=[]).groupby('').agg(mean_score=(''))
+
+- 극단치 제거
+극단치 : 논리적으로 가능하지만, 극단적으로 크거나 작은 값
+import seaborn as ans
+sns.boxplot(data=mpg, y='hwy')
+
+1,3사위분위수 구하기
+pct25 = mpg['hwy'].quantile(.25)
+pct75 = mpg['hwy'].quantile(.75)
+iqr=pct75-pct25
+
+하한, 상한 구하기
+pct25 -1.5*iqr
+pct75 +1.5*iqr
+
+극단치 결측 처리
+mpg['hwy'] = np.where((mpg['hwy']<4.5| (mpg['hwy']>40.5),
+np.nan, mpg['hwy']))
